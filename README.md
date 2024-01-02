@@ -16,21 +16,11 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Get Xero CURL command
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Open browser and login to Xero and navigate to Time Entries. In your browser open Dev Tools (I use Firefox to do this but Chrome would work too).
+In Dev Tools, locate the Network Tab and find a request that is going to https://go.xero.com. Right click on this request and select Copy Value > As cURL.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Now navigate to http://localhost:3000 and put the copied cURL script into the "Capture Credentials" input at the bottom. Note this app will persist these Credentials
+locally into your Local Storage; this is done within the ./lib/store.ts file. These credentials are fairly short lived, and will expire after 30 mins or so (I've
+not looked into actual timing, this would be in the JWT).
